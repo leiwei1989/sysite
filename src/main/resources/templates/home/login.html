@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <head >
+        <title>登录我的房小二_房小二网</title>
+        <link href="http://static.fangxiaoer.com/web/styles/main.css" rel="stylesheet" type="text/css" />
+        <link href="http://static.fangxiaoer.com/web/styles/my/login.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="http://static.fangxiaoer.com/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="http://static.fangxiaoer.com/js/fxe_confirm.js"></script>
+        <script type="text/javascript" src="js/ajaxRequest.js"></script>
+        <script language="javascript">
+            $(function () {
+                $(".jizhu label").click(function () {
+                    if ($("#Chb_Persist").attr("checked")) {
+                        $(".jizhu label").removeClass("bbb");
+                    } else {
+                        $(".jizhu label").addClass("bbb");
+                    }
+                });
+                if ($(".n1").val() != "") { $(".name span").hide(); }
+                if ($(".n2").val() != "") { $(".name pass").hide(); }
+                $(".n1").each(function () {
+                    var thisVal = $(".n1").val();    //判断文本框的值是否为空，有值的情况就隐藏提示语，没有值就显示
+                    if (thisVal != "") { $(".name").find("span").hide(); }
+                    else { $(".name").find("span").show(); }
+                    $(".n1").keyup(function () {
+                        $(".name").find("span").hide();
+                    }).blur(function () {
+                        var val = $(this).val();
+                        if (val != "") {
+                            $(".name").find("span").hide();
+                        } else {
+                            $(".name").find("span").show();
+                        }
+                    });
+                });
+                $(".n2").each(function () {
+                    var thisVal = $(".n2").val();    //判断文本框的值是否为空，有值的情况就隐藏提示语，没有值就显示
+                    if (thisVal != "") { $(".pass").find("span").hide(); }
+                    else { $(".pass").find("span").show(); }
+                    $(".n2").keyup(function () {
+                        $(".pass").find("span").hide();
+                    }).blur(function () {
+                        var val = $(this).val();
+                        if (val != "") {
+                            $(".pass").find("span").hide();
+                        } else {
+                            $(".pass").find("span").show();
+                        }
+                    });
+                });
+            });
+
+            $(".name input").live({
+                click: function () {
+                    $(this).css({ "border": "1px solid #ff8533", "border-left": "none", "outline": "none" });
+                    $(".name").css({ "background": "url(http://static.fangxiaoer.com/web/images/my/login/name_hover.png) left no-repeat" });
+                },
+                blur: function () {
+                    $(this).css({ "border": "1px solid #c0c0c0" });
+                    $(".name").css({ "background": "url(http://static.fangxiaoer.com/web/images/my/login/name.png) left no-repeat" });
+                }
+            })
+            $(".pass input").live({
+                click: function () {
+                    $(this).css({ "border": "1px solid #ff8533", "border-left": "none", "outline": "none" });
+                    $(".pass").css({ "background": "url(http://static.fangxiaoer.com/web/images/my/login/pass_hover.png) left no-repeat" });
+                },
+                blur: function () {
+                    $(this).css({ "border": "1px solid #c0c0c0" });
+                    $(".pass").css({ "background": "url(http://static.fangxiaoer.com/web/images/my/login/pass.png) left no-repeat" });
+                }
+            })
+
+
+
+        </script>
+        <script language="javascript">
+
+        </script>
+        <style>
+            .footer
+            {margin-top:0px;
+            }
+        </style>
+    </head>
+
+<body class="w1210">
+<form name="form1" method="post" action="/signinValidate" id="form1">
+    <div>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTcwMDEwMDA5D2QWAgIBD2QWAgIBD2QWAgIBDxYCHgdWaXNpYmxlaGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFC0NoYl9QZXJzaXN0B3/SSsAmLBX2RG0CuffPR2aU76Y=" />
+    </div>
+
+    <div>
+
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWBQLdm5GmBwLohL+lBgKy5MT8AgKNwtOxDQKM54rGBjrhWLxzMXOTrKRUMca5b8pJPpTd" />
+    </div>
+
+    <script src="http://static.fangxiaoer.com/js/jquery.autocomplete.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-appid="101379955" data-redirecturi="http://my.fangxiaoer.com/qc_callback.html"></script>
+    <script src="http://qzonestyle.gtimg.cn/qzone/openapi/qc-1.0.1.js" type="text/javascript" charset="utf-8" data-appid="101379955" data-redirecturi="http://my.fangxiaoer.com/qc_callback.html"></script>
+    <style type="text/css">
+        .nav_hover {display:none}
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".search_input").bind({
+                focus: function () {
+                    $(this).next().hide();
+                },
+                blur: function () {
+                    if ($(this).val() == "") {
+                        $(this).next().show();
+                    }
+                }
+            })
+            $(".header_tel").bind({
+                mouseover: function () {
+                    if (!$(this).is(":animated")) {
+                        $(this).animate({ height: "88px" }, 300);
+                    }
+                },
+                mouseleave: function () {
+                    $(this).animate({ height: "30px" }, 100);
+                }
+            })
+            $(".nav_one a").mouseover(function () {
+                $(this).parent().index()
+                $(".nav_hover ul").hide();
+                if ($(this).parent().index() == 0) {
+                    var shownav = $(".nav_one .active").find("a").attr("class");
+                    $(".nav_hover").hide();
+                    $(".nav_one li").removeClass("a_hover");
+                    shownav = shownav.substr(5);
+                    $(".nav_hover").show();
+                    $("#" + shownav).show();
+                } else {
+                    var shownav = $(this).attr("class");
+                    $(".nav_one li").removeClass("a_hover");
+                    if ($(this).parent().hasClass("active") == false) {
+                        $(this).parent().addClass("a_hover");
+                        if (shownav != "") {
+                            shownav = shownav.substr(5);
+                            $(".nav_hover").show();
+                            $("#" + shownav).show();
+                        }
+                    } else {
+                        if (shownav != "") {
+                            shownav = shownav.substr(5);
+                            $(".nav_hover").show();
+                            $("#" + shownav).show();
+                        }
+                    }
+                }
+            })
+            $(".nav_show").mouseleave(function () {
+                $(".nav_hover").hide();
+                $(".nav_hover ul").hide()
+                $(".nav_one").find("li").removeClass("a_hover");
+                var active = $(".nav_one .active a").attr("class");
+                if (active != "") {
+                    active = active.substr(5);
+                    $("#" + active).show()
+                } else {
+                    $(".nav_hover").hide()
+                }
+            })
+            $(".nav_one li").mouseleave(function () {
+                var classname = $(this).find("a").attr("class")
+                var active = $(".nav_one .active a").attr("class");
+                if (classname == "") {
+                    $(this).removeClass("a_hover");
+                    if (active != undefined) {
+                        $(".nav_hover").show();
+                        active = active.substr(5);
+                        $("#" + active).show()
+                    }
+                }
+            })
+            function changeauto(method) {
+                $(".search_input").autocomplete('/Action/PageHandler.ashx?method=' + method + '&city=1', {
+                    multiple: false,
+                    scrollHeight: 300,    // 下拉框的高度， Default: 180
+                    max: 20,
+                    parse: function (data) {
+                        //alert(data);
+                        return $.map(eval(data), function (row) {
+                            return {
+                                data: row,
+                                value: row.CompanyName,
+                                result: row.CompanyName
+                            };
+                        });
+                    },
+                    formatItem: function (item) {
+                        var txt = $("#chid").val();
+                        switch (txt) {
+                            case "5":
+                                if (item.ID == 0) {
+                                    return "<i style='float:left '>未找到关键字请重新输入条件！</i>";
+                                } else {
+                                    return "<i style='float:right'></i>" + item.CompanyName;
+                                }
+                                break;
+                            default:
+                                if (item.ID == 0) {
+                                    return "<i style='float:left '>未找到项目请重新输入条件！</i>";
+                                } else {
+                                    return "<i style='float:right'>" + item.Address + " [ 直达 ]</i>" + item.CompanyName;
+                                }
+                                break;
+                        }
+                    }
+                }).result(function (e, item) {
+                    if (item.Telephone == 1) {
+                        $("#chid").val("1");
+                        window.location.href = "http://sy.fangxiaoer.com/house/view/" + item.ID;
+                    } else if (item.Telephone == 2) {
+                        $("#chid").val("2");
+                        window.location.href = "http://sy.fangxiaoer.com/villa/view/" + item.ID;
+                    } else if (item.Telephone == 3) {
+                        $("#chid").val("3");
+                        window.location.href = "http://sy.fangxiaoer.com/office/view/" + item.ID;
+                    } else if (item.Telephone == 5) {
+                        $("#chid").val("5");
+                        window.location.href = "http://sy.fangxiaoer.com/news/view/" + item.ID;
+                    }
+                    else if (item.Telephone == 6) {//二手房小区
+                        $("#chid").val("6");
+                        window.location.href = "http://sy.fangxiaoer.com/UHouse/Subdistrict/view/" + item.ID;
+                    }
+                    else {
+                        $(".ac_input").val(item.CompanyName);
+                        $("#chid").val("4");
+                    }
+
+                });
+            };
+
+            $(".ac_input").bind("click", function () {
+                var txt = $("#chid").val();
+                switch (txt) {
+                    case "5":
+                        changeauto("getxinwen");
+                        break;
+                    case "6":
+                        changeauto("getsub");
+                        break;
+                    default:
+                        changeauto("get1");
+                        break;
+                }
+            });
+
+            $(".search_btn").click(function () {
+                var txt = $("#chid").val();
+                input = $(this).prev().find("input").val(); //取输入框值
+                //input = $(this).next().find("input").val(); //取输入框值
+                if (input != "") {
+                    switch (txt) {
+                        case "1":
+                            url = "http://sy.fangxiaoer.com/house/1_0_-1_-1_-1_-1_0_0_0_0_0_" + input + "_1";
+                            break;
+                        case "3":
+                            url = "http://sy.fangxiaoer.com/office/1_0_0_0_0_0_" + input + "_1";
+                            break;
+                        case "4":
+                            url = "http://sy.fangxiaoer.com/house/search.aspx?keys=" + input;
+                            break;
+                        case "5":
+                            url = "http://sy.fangxiaoer.com/need/strategy.aspx?keys=" + input;
+                            break;
+                        case "6":
+                            url = "http://sy.fangxiaoer.com/UHouse/Subdistrict/SubdistrictList.aspx?keys=" + input;
+                            break;
+                    }
+                    window.location.href = url;
+                }; //判断结束
+            });
+            var keys = '';
+            if (keys != "" && keys != "null" && keys != null && keys != "0") {
+                $("#txtkeys").val(keys);
+            }
+            $(".ac_input").each(function () {
+                var thisVal = $(".ac_input").val();    //判断文本框的值是否为空，有值的情况就隐藏提示语，没有值就显示
+                if (thisVal != "") { $(".ac_input").siblings("span").hide(); }
+                else { $(".ac_input").siblings("span").show(); }
+                $(".ac_input").keyup(function () {
+                    $(".ac_input").siblings("span").hide();
+                }).blur(function () {
+                    var val = $(this).val();
+                    if (val != "") {
+                        $(this).siblings("span").hide();
+                    } else {
+                        $(this).siblings("span").show();
+                    }
+                });
+            });
+        });
+
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $(".search_btn").click();
+                var type = $("#chid").val();
+
+                switch (type) {
+                    case "1":
+                        url = "http://sy.fangxiaoer.com/house/1_0_-1_-1_-1_-1_0_0_0_0_0_" + keys + "_1";
+                        break;
+                    case "3":
+                        url = "http://sy.fangxiaoer.com/office/1_0_0_0_0_0_" + keys + "_1";
+                        break;
+                    case "5":
+                        url = "http://sy.fangxiaoer.com/need/strategy.aspx?keys=" + input;
+                        break;
+
+                } window.location.href = url;
+            }
+            $(".nav_one").children().bind("click", function () {
+                $(this).addclass("")
+            })
+        });
+
+    </script>
+
+    <div id="sy_head_event">
+
+        <div class="sy_head_w">
+            <div class="sy_logo_top"><a href="http://sy.fangxiaoer.com"> <img src="http://static.fangxiaoer.com/web/images/ico/head/sy_logo_top.gif"></a></div>
+            <div class="sy_head_r">
+                <div style="background: none;padding-right:16px"><a href="http://sy.fangxiaoer.com/house/housemap/" target="_blank">地图找房</a></div>
+                <div style="background:none;padding-right:16px;"><a href="http://download.fangxiaoer.com/" target="_blank">手机找房</a></div>
+                <div class="no-border">联系我们<p style="width:325px;right:0px;"><i style="left: inherit;right: 8px;"><img src="http://static.fangxiaoer.com/web/images/ico/head/head_top_ico.gif" alt=""></i><img src="http://static.fangxiaoer.com/web/images/ico/head/head_top_tel.gif" alt="联系我们二维码" class="head_app"><span style="float:left;border-left:1px solid #dfdfdf;padding-left: 10px;line-height: 22px;color: #666;">关注房小二网微信，了解最新楼盘信息<br>企业合作：400-893-9219<br>新房客服：400-893-9575<br>二手房客服：400-893-9709</span></p></div>
+                <div class="head_daohang"  style="border:none">网站导航<p style="width:1177px;right:0"><i style="left: inherit;right: 8px;"><img src="http://static.fangxiaoer.com/web/images/ico/head/head_top_ico.gif" alt=""></i>
+                    <span style="width:252px;margin:0 23px">
+                    <b><a href="http://sy.fangxiaoer.com/house/" target="_blank">新房</a></b>
+                    <a href="http://sy.fangxiaoer.com/house/" target="_blank">找楼盘</a>
+                    <a href="http://sy.fangxiaoer.com/marketing/default.aspx" target="_blank">抢礼包</a>
+                    <a href="http://sy.fangxiaoer.com/Brand/s/" target="_blank">品牌房企</a>
+                    <a href="http://sy.fangxiaoer.com/subway/" target="_blank">地铁沿线</a>
+                    <a href="http://sy.fangxiaoer.com/school/" target="_blank">优质学区</a>
+                    <a href="http://sy.fangxiaoer.com/logpay/" target="_blank">低首付</a>
+                    <a href="http://sy.fangxiaoer.com/exits/" target="_blank">现房</a>
+                    <a href="http://sy.fangxiaoer.com/jingzhuang/s/" target="_blank">精装房</a>
+                    <a href="http://sy.fangxiaoer.com/formulate/house.aspx" target="_blank">帮您找房</a>
+                    <a href="http://sy.fangxiaoer.com/house/housemap/" target="_blank">楼盘地图</a>
+                </span>
+                    <span style="width:107px;margin-right:15px">
+                    <b><a href="http://sy.fangxiaoer.com/UHouse/sale/Region/" target="_blank">二手房</a></b>
+                    <a href="http://sy.fangxiaoer.com/UHouse/sale/Region/" target="_blank">出售房源</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/Subdistrict/SubdistrictList/" target="_blank">小区找房</a>                   
+                    <a href="http://sy.fangxiaoer.com/UHouse/sale/UHouseSubway/" target="_blank">地铁沿线二手房</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/sale/dashuju/" target="_blank">全网找房</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/sale/SaleHouse.aspx" target="_blank">我要卖房</a>
+                    <a href="http://sy.fangxiaoer.com/uhouse/housemap/" target="_blank">二手房地图</a>
+                </span>
+                    <span style="width:107px;margin-right:15px">
+                    <b><a href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/" target="_blank">租房</a></b>
+                    <a href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/" target="_blank">出租房源</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/1_-1_-1_-1_-1_-1_-1_1_0_0_-1_-1_1" target="_blank">个人房源</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/1_-1_-1_-1_-1_-1_-1_2_0_0_-1_-1_1/" target="_blank">经纪人房源</a>
+                    <a href="http://sy.fangxiaoer.com/UHouse/rent/rent_form_1.aspx" target="_blank">我要出租</a>
+                    <a href="http://sy.fangxiaoer.com/rent/housemap/" target="_blank">租房地图</a>
+                </span>
+                    <span style="width:107px;margin-right:15px">
+                    <b><a href="http://sy.fangxiaoer.com/uhouse/shangpu/" target="_blank">商铺</a></b>
+                    <a href="http://sy.fangxiaoer.com/uhouse/shangpu/" target="_blank">商铺房源</a>
+                    <a href="http://sy.fangxiaoer.com/house/shops/" target="_blank">新房商铺</a>
+                    <a href="http://sy.fangxiaoer.com/uhouse/shangpu/sale.aspx" target="_blank">发布商铺</a>
+                </span>
+                    <span style="width:168px;margin-right:15px">
+                    <b><a href="http://sy.fangxiaoer.com/need/index.aspx" target="_blank">小二管家</a></b>
+
+        <a href="http://sy.fangxiaoer.com/need/homeAct.aspx">小二活动</a>
+        <a href="http://sy.fangxiaoer.com/need/integral.aspx">积分商城</a>
+        <a href="http://sy.fangxiaoer.com/need/strategy.aspx">购房攻略</a>
+        <a href="http://sy.fangxiaoer.com/need/baike.aspx">购房百科</a>
+                </span>
+                    <span style="width:170px;margin-right:15px">
+                    <b><a href="http://sy.fangxiaoer.com/news/" target="_blank">资讯</a></b>
+                    <a href="http://sy.fangxiaoer.com/news/149" target="_blank">行业关注</a>
+                    <a href="http://sy.fangxiaoer.com/news/148" target="_blank">置业推荐</a>
+                    <a href="http://sy.fangxiaoer.com/news/151" target="_blank">楼盘活动</a>
+                    <a href="http://sy.fangxiaoer.com/news/156" target="_blank">专题推荐</a>
+                    <a href="http://sy.fangxiaoer.com/news/154" target="_blank">工程进度</a>
+                    <a href="http://sy.fangxiaoer.com/videos/3" target="_blank">活动视频</a>
+                    <a href="http://sy.fangxiaoer.com/videos/7" target="_blank">人物专访</a>
+                    <a href="http://sy.fangxiaoer.com/videos/2" target="_blank">视频看房</a>
+                    <a href="http://sy.fangxiaoer.com/videos/5" target="_blank">微电影</a>
+                    <a href="http://sy.fangxiaoer.com/videos/1" target="_blank">企业视频</a>
+                </span>
+                    <span style="width:107px;">
+                    <b><a href="http://sy.fangxiaoer.com/tool/jsq/shangyedaikuan.aspx" target="_blank">购房工具</a></b>
+                    <a href="http://sy.fangxiaoer.com/tool/jsq/shangyedaikuan.aspx" target="_blank">贷款计算器</a>
+                    <a href="http://sy.fangxiaoer.com/tool/jsq/tiqianhuankuan.aspx" target="_blank">还款计算器</a>
+                    <a href="http://sy.fangxiaoer.com/tool/jsq/shuifei.aspx" target="_blank">税费计算器</a>
+                    <a href="http://sy.fangxiaoer.com/tool/jsq/goufangnenglipinggu.aspx" target="_blank">购房能力评估</a>
+                    <a href="http://sy.fangxiaoer.com/tool/jsq/gongjijindaikuanedupinggu.aspx " target="_blank" style="width:108px;">公积金贷款额度评估</a>
+                </span>
+                </p></div>
+            </div>
+            <div class="sy_head_l">　<span>
+                <a href="http://my.fangxiaoer.com/login.aspx" style="background:no-repeat">个人登录</a><a href="http://agent.fangxiaoer.com/">经纪人登录</a><a href="http://my.fangxiaoer.com/register.aspx" class="no-border">免费注册</a>
+                
+                <span id="qqLogin" class="hid"></span>
+                
+            
+            
+             </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        QC.Login({
+            btnId: "qqLogin"    //插入按钮的节点id
+        });
+        $(".sy_head_l a").eq(1).click(function () {
+            if (QC.Login.check()) {
+                QC.Login.signOut();
+            };
+            location.href = "/admin/logout.aspx";
+        })
+    </script>
+
+    <div  class="bg">
+        <div style="margin-top:110px"><a href="http://sy.fangxiaoer.com/need/xegjzs/Listxegj/" target="_blank"><img src="http://static.fangxiaoer.com/web/images/my/login/5.jpg" /></a></div>
+        <div class="login">
+            <div class="title"><img src="http://static.fangxiaoer.com/web/images/my/login/title.png"/></div>
+            <div class="name"><label>
+                <input name="Txt_LoginName" type="text" maxlength="11" id="Txt_LoginName" class="inputStyle n1 fxe_mobile" onblur="adminBlur()" onfocus="adminFocuks()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />
+                <span>请输入手机号</span></label></div>
+            <div class="pass"><label>
+                <input name="Txt_Password" type="password" id="Txt_Password" onblur="psaawrodBlur()" onfocus="passwrodFoucks()" class="inputStyle n2 fxe_password" />
+                <span>请输入密码</span></label></div>
+            <div class="other">
+                <p><a href="RetrPassword.aspx">忘记密码</a> | <a href="register.aspx">免费注册</a></p>
+                <div class="jizhu hid">
+                    <input id="Chb_Persist" type="checkbox" name="Chb_Persist" checked="checked" />
+                    <label for="Chb_Persist">记住我的账号</label></div>
+
+            </div>
+            <p style="height:24px; line-height:24px; color:#fff;margin-top:10px;" id="error_info" class="error_info"></p>
+
+            <div>
+                <input type="submit" name="Button1" value="登录" onclick="register();return false;" id="Button1" class="btn" />
+            </div>
+            <div class="agent">企业用户登录：<a href="http://agent.fangxiaoer.com/">我是经纪人</div></div>
+
+    </div>
+
+
+    </div>
+    <script type="text/javascript">
+        var submitSign = 1;
+        //标识
+        var hintButton = 0;//没点击登录按钮
+        //登录按钮
+        function register() {
+            psaawrodBlur();
+            if (adminBlur()) {
+                if (confirm.mobile()) {
+                    if (confirm.register()) {
+                        hintButton = 1;
+                        if (submitSign == 1) {
+                            submitSign = 0;
+                            setTimeout("submitSign=1", 1500);
+                            $("#form1").submit();
+                        }
+                    }
+                }
+            }
+
+        }
+        //用户名
+        function adminFocuks() {
+            if (hintButton == 1) {
+                hintButton = 0;
+                confirm.clearInfo()
+            }
+        }
+        function adminBlur() {
+            if (fxeTime.mobile()) {
+                if (!confirm.mobile()) {
+                    $(".error_info").text("这步可以删了");
+                    return false;
+                } else {
+                    if (ajaxRequest.mobilZC()) {
+                        $(".error_info").html('用户不存在&emsp;<a href="/register?number='+Math.random()+'" style="color:#ff6a00;">点此注册</a>');
+                        return false;
+                    } else {
+                        return true;
+
+                    }
+                }
+            }
+        }
+        //密码
+        function passwrodFoucks() {
+            if (hintButton == 1) {
+                hintButton = 0;
+                confirm.clearInfo()
+            }
+        }
+        function psaawrodBlur() {
+            if (confirm.mobile()) {
+                setTimeout(function(){
+                    fxeTime.password();
+                },100);
+            }
+        }
+    </script>
+
+
+
+    <div class="cl"></div>
+    <div class="footer">
+        <div class="footer_ewm footer_width">
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_1.jpg"/>
+                <p>扫描下载APP</p>
+                手机浏览器访问网址<br>m.fangxiaoer.com
+            </div>
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_2.jpg"/>
+                <p>关注微信服务号</p>
+                手指移动，轻松掌握房产最新优惠活动
+            </div>
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_3.jpg"/>
+                <p>关注微信订阅号</p>
+                了解最新楼盘信息
+            </div>
+            <img src="http://static.fangxiaoer.com/web/images/ico/head/footer_160309.png" class="footer_biaoshi"/>
+        </div>
+        <div class="footer_copy footer_width">
+            <a href="http://www.fangxiaoer.org/" target="_blank">佳恒传媒</a>
+            <a href="http://www.fangxiaoer.com/Index" target="_blank">关于房小二</a>
+            <a href="http://sy.fangxiaoer.com/Sitemap.html" target="_blank">网站地图</a>
+            <a href="http://www.fangxiaoer.com/Join" target="_blank">招兵买马</a>
+            <a href="http://www.fangxiaoer.com/About/team" target="_blank">团队介绍</a>
+            <a href="http://www.fangxiaoer.com/About/development" target="_blank">发展历程</a>
+            <a href="http://www.fangxiaoer.com/About/reports" target="_blank">媒体报道</a>
+            <a href="http://www.fangxiaoer.com/About/contactus" target="_blank">联系我们</a>
+            <a href="http://www.fangxiaoer.com/About/copyright" target="_blank">版权声明</a>
+            <a href="http://www.fangxiaoer.com/About/disclaimer" target="_blank">免责声明</a>
+            <a href="http://www.fangxiaoer.com/Help" target="_blank" class="bor_n">使用帮助</a>
+            <div class="cl"></div>
+            <p>版权所有 Copyright © 2008-2017 www.fangxiaoer.com All Rights Reserved　辽B2-20150134</p>
+        </div>
+    </div>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?b7578a666e9b3a1ef607091f385e3a64";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</form>
+</body>
+</html>
+

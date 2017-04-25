@@ -1,0 +1,1190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head  ID="head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>个人中心 - 房小二网</title>
+    <link href="http://static.fangxiaoer.com/web/styles/main.css" rel="stylesheet" type="text/css" />
+    <link href="http://static.fangxiaoer.com/web/styles/my/admin/base.css" rel="stylesheet" type="text/css" />
+    <link href="http://static.fangxiaoer.com/web/styles/my/admin/default1.css" rel="stylesheet" type="text/css" />
+    <link href="http://static.fangxiaoer.com/web/styles/my/admin/lqyh_tc.css" rel="stylesheet" type="text/css">
+
+
+
+    <link href="http://static.fangxiaoer.com/js/huanxinjs/css/bootstrap.css" rel="stylesheet" />
+    <!--sdk-->
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/sdk/strophe.js"></script>
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/sdk/easemob.im-1.1.js"></script>
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/sdk/easemob.im-1.1.shim.js"></script>
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/js/easemob.im.config.js"></script>
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/js/jquery-1.11.1.js"></script>
+    <script src="http://static.fangxiaoer.com/js/huanxinjs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="http://static.fangxiaoer.com/js/huanxinjs/css/bootstrap.css" />
+    <link rel="stylesheet" href="http://static.fangxiaoer.com/js/huanxinjs/css/webim.css" />
+    <script>
+        function lxr() {
+            if ($("#lxr").attr("class") == "lxr") {
+                $("#lxr").attr("class", "lxr_hover");
+                $(".lxr_list").show();
+                $("#Message").show();
+            } else {
+                $("#lxr").attr("class", "lxr");
+                $(".lxr_list").hide();
+                $("#Message").hide();
+                $(".list_fenlei li").css("border", "none");
+            }
+        }
+
+        $(function () {
+            $(".list_fenlei b").click(function () {
+                if ($(this).parent().attr("class") == "list_fenlei") {
+                    $(this).parent().attr("class", "list_fenlei act");
+                } else {
+                    $(this).parent().attr("class", "list_fenlei");
+                }
+            });
+            $(".message_title span").click(function () {
+                $("#Message").hide();
+                $(".list_fenlei li").css("border", "none");
+            });
+            $(".list_fenlei li").click(function () {
+                $(".list_fenlei li").css("border", "none");
+                $(this).css("border", "1px solid #bbb");
+                $(this).css("border-left", "1px solid #fff");
+                $("#Message").show();
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript" src="http://static.fangxiaoer.com/js/my_height.js"></script>
+    <script type="text/javascript" src="http://static.fangxiaoer.com/js/my_jifen.js"></script>
+    <link href='http://static.fangxiaoer.com/js/rili/fullcalendar.css' rel='stylesheet' />
+    <style type="text/css">
+        .line1-left{background: url(http://static.fangxiaoer.com/web/images/my/admin/bg-yhj.png) no-repeat center;color:#FFF;font-size:24px;}
+        .line1-right{background: url(http://static.fangxiaoer.com/web/images/my/admin/bg-yhj2.png) no-repeat left ;padding-left:10px;}
+        .line2-left{background: url(http://static.fangxiaoer.com/web/images/my/admin/fen-left.png) no-repeat center;color:#FFF;font-size:24px;}
+        .line2-right{background: url(http://static.fangxiaoer.com/web/images/my/admin/fen-right.png) no-repeat left ;padding-left:10px;}
+        .tab td{border: none !important; padding:30px 0;}
+        /*抢礼包样式*/
+        .tab tr{background:#fcfaf3;}
+        .gift .line1-left{background: url("http://static.fangxiaoer.com/web/images/m/gift.png") no-repeat; width: 70px; color:#fcfaf3;}
+        .gift .line1-right {background: none; }
+        .gift:hover{border:1px solid #ff5200;}
+        .tab {border-collapse: collapse;}
+        .gift td {padding:18px;}
+        .gift .giftColor{color:#ff5200;}
+        .gift td {padding: 18px 0;}
+    </style>
+    <script src='http://static.fangxiaoer.com/js/rili/moment.min.js'></script>
+    <script src='http://static.fangxiaoer.com/js/rili/fullcalendar.js'></script>
+    <script src="http://static.fangxiaoer.com/js/AjaxforJquery.js" type="text/javascript"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            var aaa = 0;
+            $(".qiandao").click(function(){
+                $(".rl").css("top","38px");
+
+                aaa = "{start: '2015-04-01'},";
+            });
+            $(".close").click(function(){
+                $(".rl").css("top","-9999px");
+            });
+
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                //	defaultDate: '2014-09-12',
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    {start: '2017-04-21'}
+
+
+                ]
+            });
+            //小二管家弹出
+            $(".xegj").mouseover(function(){
+                $(".xegj_infor").show();
+            })
+            $(".xegj").mouseout(function(){
+                $(".xegj_infor").hide();
+            })
+
+
+        });
+
+    </script>
+    <script type="text/javascript">
+        //        function countup() {
+        //            fangxiaoer.ajax("upeatechange", function (data) {
+
+        //                var oTxt = document.getElementById("Ltr_Integration");
+        //                oTxt = oTxt * data;
+        //            });
+        //        }
+        var vouid=0;
+        $(document).ready(function() {
+            $("#qyhq").hide();
+            $.ajax({
+                type: "POST",
+                data: {Vouchersid:vouid},
+                url: "/action/Handler.ashx?Method=isvo",
+                async: false,
+                success: function (data) {
+                    if (data === "1") {
+                        $("#qyhq").show();
+                    }
+
+                }
+            });
+        });
+        function addvo() {
+            $.ajax({
+                type: "POST",
+                data: {Vouchersid:vouid},
+                url: "/action/Handler.ashx?Method=addvo",
+                async: false,
+                success: function (data) {
+                    if(data === "-1")
+                    {
+                        alert("您已经领取过此类券！");
+                        window.location.href="index.aspx";
+                    }else if(data === "-2")
+                    {
+                        alert("此优惠劵过期！");
+                    }else if(data === "1")
+                    {
+                        alert("领取成功！");
+                    }else{
+                        alert("请您重新刷新页面！");
+                    }
+                }
+            });
+            //            fangxiaoer.ajax("addvo", function (data) {
+            //            
+            //            });
+        }
+    </script>
+
+</head>
+
+<body class="w1210">
+<form name="form1" method="post" action="index.aspx" id="form1">
+    <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+        <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUINzg2MjI3NDgPZBYCZg9kFgpmD2QWAmYPFgIeB1Zpc2libGVoZAICDxAPFgIeC18hRGF0YUJvdW5kZ2QQFQYJ6K+36YCJ5oupDOmZkOaXtuenkuadgAnkvJjmg6DlirUM6LSt5oi/56S85YyFCemAmueUqOWNtwlWSVDkvJrlkZgVBgnor7fpgInmi6kM6ZmQ5pe256eS5p2ACeS8mOaDoOWKtQzotK3miL/npLzljIUJ6YCa55So5Y23CVZJUOS8muWRmBQrAwZnZ2dnZ2cWAWZkAgMPEA8WAh8BZ2QQFQQJ6K+36YCJ5oupBuato+W4uAnlt7Lkvb/nlKgG6L+H5pyfFQQJ6K+36YCJ5oupBuato+W4uAnlt7Lkvb/nlKgG6L+H5pyfFCsDBGdnZ2cWAWZkAgQPFgIeC18hSXRlbUNvdW50ZmQCBQ8WAh8CAgMWBmYPZBYCZg8VCAI1NUNodHRwOi8vaW1hZ2VzLmZhbmd4aWFvZXIuY29tL3N5L3F0L2JpZy8yMDE2LzA3LzEzLzU3ODViMTI4MGE1OGEuanBnDOaVsOeggeWutueUtQI1NQ/lrrbnlKjnha7om4vlmagEMTAwMAIyMAEyZAIBD2QWAmYPFQgCNTZDaHR0cDovL2ltYWdlcy5mYW5neGlhb2VyLmNvbS9zeS9xdC9iaWcvMjAxNi8wNy8xMy81Nzg1Yjg1ZDBiMjA3LmpwZwzlrrblsYXoo4XppbACNTYM5a625bGF5Y+w54GvBDEyMDACMjACMTBkAgIPZBYCZg8VCAI2OUNodHRwOi8vaW1hZ2VzLmZhbmd4aWFvZXIuY29tL3N5L3F0L2JpZy8yMDE2LzEwLzIwLzU4MDg4YzliYjczYjcuanBnDOaVsOeggeWutueUtQI2OR7lsI/lpKnpuYXlj5jpopHmu5rnrZLmtJfooaPmnLoFMzgwMDACMjACMjBkZF+YzerayoqKM9bSECsoYysiJLnA" />
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms['form1'];
+        if (!theForm) {
+            theForm = document.form1;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+        //]]>
+    </script>
+
+
+    <div>
+
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWDQL3zrSpCwK/6LXbAgKp/MOHBgKfwrSDCALmvYbCCAKO3fmiDwLyo7W2BQLt5/mJCALPkOakAQLZhJD4BQLy0e26AQKPm5DZDAKW6IryD3GECiOTNH3qk+MmH+JfB0FgKiCY" />
+    </div>
+
+    <script src="http://static.fangxiaoer.com/js/jquery.autocomplete.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-appid="101379955" data-redirecturi="http://my.fangxiaoer.com/qc_callback.html"></script>
+    <script src="http://qzonestyle.gtimg.cn/qzone/openapi/qc-1.0.1.js" type="text/javascript" charset="utf-8" data-appid="101379955" data-redirecturi="http://my.fangxiaoer.com/qc_callback.html"></script>
+    <style type="text/css">
+        .nav_hover {display:none}
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".search_input").bind({
+                focus: function () {
+                    $(this).next().hide();
+                },
+                blur: function () {
+                    if ($(this).val() == "") {
+                        $(this).next().show();
+                    }
+                }
+            })
+            $(".header_tel").bind({
+                mouseover: function () {
+                    if (!$(this).is(":animated")) {
+                        $(this).animate({ height: "88px" }, 300);
+                    }
+                },
+                mouseleave: function () {
+                    $(this).animate({ height: "30px" }, 100);
+                }
+            })
+            $(".nav_one a").mouseover(function () {
+                $(this).parent().index()
+                $(".nav_hover ul").hide();
+                if ($(this).parent().index() == 0) {
+                    var shownav = $(".nav_one .active").find("a").attr("class");
+                    $(".nav_hover").hide();
+                    $(".nav_one li").removeClass("a_hover");
+                    shownav = shownav.substr(5);
+                    $(".nav_hover").show();
+                    $("#" + shownav).show();
+                } else {
+                    var shownav = $(this).attr("class");
+                    $(".nav_one li").removeClass("a_hover");
+                    if ($(this).parent().hasClass("active") == false) {
+                        $(this).parent().addClass("a_hover");
+                        if (shownav != "") {
+                            shownav = shownav.substr(5);
+                            $(".nav_hover").show();
+                            $("#" + shownav).show();
+                        }
+                    } else {
+                        if (shownav != "") {
+                            shownav = shownav.substr(5);
+                            $(".nav_hover").show();
+                            $("#" + shownav).show();
+                        }
+                    }
+                }
+            })
+            $(".nav_show").mouseleave(function () {
+                $(".nav_hover").hide();
+                $(".nav_hover ul").hide()
+                $(".nav_one").find("li").removeClass("a_hover");
+                var active = $(".nav_one .active a").attr("class");
+                if (active != "") {
+                    active = active.substr(5);
+                    $("#" + active).show()
+                } else {
+                    $(".nav_hover").hide()
+                }
+            })
+            $(".nav_one li").mouseleave(function () {
+                var classname = $(this).find("a").attr("class")
+                var active = $(".nav_one .active a").attr("class");
+                if (classname == "") {
+                    $(this).removeClass("a_hover");
+                    if (active != undefined) {
+                        $(".nav_hover").show();
+                        active = active.substr(5);
+                        $("#" + active).show()
+                    }
+                }
+            })
+            function changeauto(method) {
+                $(".search_input").autocomplete('/Action/PageHandler.ashx?method=' + method + '&city=1', {
+                    multiple: false,
+                    scrollHeight: 300,    // 下拉框的高度， Default: 180
+                    max: 20,
+                    parse: function (data) {
+                        //alert(data);
+                        return $.map(eval(data), function (row) {
+                            return {
+                                data: row,
+                                value: row.CompanyName,
+                                result: row.CompanyName
+                            };
+                        });
+                    },
+                    formatItem: function (item) {
+                        var txt = $("#chid").val();
+                        switch (txt) {
+                            case "5":
+                                if (item.ID == 0) {
+                                    return "<i style='float:left '>未找到关键字请重新输入条件！</i>";
+                                } else {
+                                    return "<i style='float:right'></i>" + item.CompanyName;
+                                }
+                                break;
+                            default:
+                                if (item.ID == 0) {
+                                    return "<i style='float:left '>未找到项目请重新输入条件！</i>";
+                                } else {
+                                    return "<i style='float:right'>" + item.Address + " [ 直达 ]</i>" + item.CompanyName;
+                                }
+                                break;
+                        }
+                    }
+                }).result(function (e, item) {
+                    if (item.Telephone == 1) {
+                        $("#chid").val("1");
+                        window.location.href = "http://sy.fangxiaoer.com/house/view/" + item.ID;
+                    } else if (item.Telephone == 2) {
+                        $("#chid").val("2");
+                        window.location.href = "http://sy.fangxiaoer.com/villa/view/" + item.ID;
+                    } else if (item.Telephone == 3) {
+                        $("#chid").val("3");
+                        window.location.href = "http://sy.fangxiaoer.com/office/view/" + item.ID;
+                    } else if (item.Telephone == 5) {
+                        $("#chid").val("5");
+                        window.location.href = "http://sy.fangxiaoer.com/news/view/" + item.ID;
+                    }
+                    else if (item.Telephone == 6) {//二手房小区
+                        $("#chid").val("6");
+                        window.location.href = "http://sy.fangxiaoer.com/UHouse/Subdistrict/view/" + item.ID;
+                    }
+                    else {
+                        $(".ac_input").val(item.CompanyName);
+                        $("#chid").val("4");
+                    }
+
+                });
+            };
+
+            $(".ac_input").bind("click", function () {
+                var txt = $("#chid").val();
+                switch (txt) {
+                    case "5":
+                        changeauto("getxinwen");
+                        break;
+                    case "6":
+                        changeauto("getsub");
+                        break;
+                    default:
+                        changeauto("get1");
+                        break;
+                }
+            });
+
+            $(".search_btn").click(function () {
+                var txt = $("#chid").val();
+                input = $(this).prev().find("input").val(); //取输入框值
+                //input = $(this).next().find("input").val(); //取输入框值
+                if (input != "") {
+                    switch (txt) {
+                        case "1":
+                            url = "http://sy.fangxiaoer.com/house/1_0_-1_-1_-1_-1_0_0_0_0_0_" + input + "_1";
+                            break;
+                        case "3":
+                            url = "http://sy.fangxiaoer.com/office/1_0_0_0_0_0_" + input + "_1";
+                            break;
+                        case "4":
+                            url = "http://sy.fangxiaoer.com/house/search.aspx?keys=" + input;
+                            break;
+                        case "5":
+                            url = "http://sy.fangxiaoer.com/need/strategy.aspx?keys=" + input;
+                            break;
+                        case "6":
+                            url = "http://sy.fangxiaoer.com/UHouse/Subdistrict/SubdistrictList.aspx?keys=" + input;
+                            break;
+                    }
+                    window.location.href = url;
+                }; //判断结束
+            });
+            var keys = '';
+            if (keys != "" && keys != "null" && keys != null && keys != "0") {
+                $("#txtkeys").val(keys);
+            }
+            $(".ac_input").each(function () {
+                var thisVal = $(".ac_input").val();    //判断文本框的值是否为空，有值的情况就隐藏提示语，没有值就显示
+                if (thisVal != "") { $(".ac_input").siblings("span").hide(); }
+                else { $(".ac_input").siblings("span").show(); }
+                $(".ac_input").keyup(function () {
+                    $(".ac_input").siblings("span").hide();
+                }).blur(function () {
+                    var val = $(this).val();
+                    if (val != "") {
+                        $(this).siblings("span").hide();
+                    } else {
+                        $(this).siblings("span").show();
+                    }
+                });
+            });
+        });
+
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $(".search_btn").click();
+                var type = $("#chid").val();
+
+                switch (type) {
+                    case "1":
+                        url = "http://sy.fangxiaoer.com/house/1_0_-1_-1_-1_-1_0_0_0_0_0_" + keys + "_1";
+                        break;
+                    case "3":
+                        url = "http://sy.fangxiaoer.com/office/1_0_0_0_0_0_" + keys + "_1";
+                        break;
+                    case "5":
+                        url = "http://sy.fangxiaoer.com/need/strategy.aspx?keys=" + input;
+                        break;
+
+                } window.location.href = url;
+            }
+            $(".nav_one").children().bind("click", function () {
+                $(this).addclass("")
+            })
+        });
+
+    </script>
+
+    <div id="sy_head">
+
+        <div class="sy_head_w">
+
+            <div class="sy_head_r">
+                <div style="background: none;padding-right:16px"><a href="http://sy.fangxiaoer.com/house/housemap/" target="_blank">地图找房</a></div>
+                <div style="background:none;padding-right:16px;"><a href="http://download.fangxiaoer.com/" target="_blank">手机找房</a></div>
+                <div class="no-border">联系我们<p style="width:325px;right:0px;"><i style="left: inherit;right: 8px;"><img src="http://static.fangxiaoer.com/web/images/ico/head/head_top_ico.gif" alt=""></i><img src="http://static.fangxiaoer.com/web/images/ico/head/head_top_tel.gif" alt="联系我们二维码" class="head_app"><span style="float:left;border-left:1px solid #dfdfdf;padding-left: 10px;line-height: 22px;color: #666;">关注房小二网微信，了解最新楼盘信息<br>企业合作：400-893-9219<br>新房客服：400-893-9575<br>二手房客服：400-893-9709</span></p></div>
+
+            </div>
+            <div class="sy_head_l">　<span>
+                
+                <em>Hi，</em><i><a href="http://my.fangxiaoer.com/">15998875172</a></i><a >退出</a>
+                <span id="qqLogin" class="hid"></span>
+                
+            
+            
+             </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        QC.Login({
+            btnId: "qqLogin"    //插入按钮的节点id
+        });
+        $(".sy_head_l a").eq(1).click(function () {
+            if (QC.Login.check()) {
+                QC.Login.signOut();
+            };
+            location.href = "/admin/logout.aspx";
+        })
+    </script>
+
+    <div class="header">
+        <div class="header_container">
+            <a href="http://sy.fangxiaoer.com/" class="logo">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/logo.png" /></a>
+            <div class="header_search">
+                <input type="hidden" name="chid" id="chid" value="4" />
+                <label style="float: left">
+                    <span style="display: block;">请输入关键字 如：中海和平之门</span>
+                    <input type="text" style="z-index: 0" id="Text1" class="search_input ac_input" autocomplete="off" onkeyup="this.value=this.value.replace(/[`~!@#$%^&*()+=|\\\][\]\{\}:;'\,.<>/?]{1}[^`~!@$%^&()+=|\\\][\]\{\}:;'\,.<>?]{0,19}$/g,'')">
+                </label>
+                <input name="" type="button" class="search_btn" value="" style="position: absolute" />
+            </div>
+            <a href="http://download.fangxiaoer.com/" target="_blank" class="header_gg">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/nav_gg.jpg" /></a>
+            <div class="cl">
+            </div>
+        </div>
+    </div>
+    <div class="nav_show">
+        <div class="nav">
+            <div class="nav_container">
+                <ul class="nav_one">
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com">首页</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/house/" class="show_house">新房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/Region/" class="show_uhouse">二手房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/" class="show_rent">租房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/shangpu/" class="show_shangpu">商铺</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/need/" class="show_need">小二管家</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/SaleHouse.aspx" class="show_form">免费发布</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/news/" class="show_strategy">资讯</a></li>
+                </ul>
+                <div class="cl">
+                </div>
+            </div>
+        </div>
+        <div class="nav_hover">
+            <div class="nav_float">
+                <!--买新房列表-->
+                <ul id="house">
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/house/" >找楼盘</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/marketing/default.aspx">抢礼包<img src="http://static.fangxiaoer.com/web/images/ico/head/head_fd.png" style="top:-7px" alt="抢优惠"></a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/Brand/s/">品牌房企</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/subway/" >地铁沿线</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/school/" >优质学区</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/logpay/" >低首付</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/exits/" >现房</a></li>
+                    <li ><a target="_blank" href="http://sy.fangxiaoer.com/jingzhuang/s/">精装房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/formulate/house.aspx" target="_blank">帮您找房</a></li>
+                    <li  class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/house/housemap/">地图找房<img src="http://static.fangxiaoer.com/web/images/ico/head/head_hot.gif"  alt="热门"/></a></li>
+                </ul>
+                <!--买二手房列表-->
+                <ul id="uhouse">
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/Region/"class="active">出售房源</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/Subdistrict/SubdistrictList/">小区找房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/UHouseSubway/">地铁沿线</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/dashuju/">全网找房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/judicial.aspx">司法拍卖</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/formulate/house.aspx?ids=2" target="_blank" class="activeoff">帮您找房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/SaleHouse.aspx" target="_blank" class="activeoff">我要卖房</a></li>
+                    <li class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/uhouse/housemap/">地图找房<img src="http://static.fangxiaoer.com/web/images/ico/head/head_hot.gif" alt="热门"/></a></li>
+                </ul>
+                <!--租房-->
+                <ul id="rent">
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/1_-1_-1_-1_-1_-1_-1_0_0_0_-1_-1_1">出租房源</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/1_-1_-1_-1_-1_-1_-1_1_0_0_-1_-1_1">个人房源</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/RentRegion/1_-1_-1_-1_-1_-1_-1_2_0_0_-1_-1_1/">经纪人房源</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/rent_form_1.aspx" target="_blank">我要出租</a></li>
+                    <li class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/rent/housemap/">地图找房<img src="http://static.fangxiaoer.com/web/images/ico/head/head_hot.gif" alt="热门" /></a></li>
+                </ul>
+                <!--商铺-->
+                <ul id="shangpu"  style="display:block">
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/shangpu/">商铺房源</a></li>
+                    <li><a  target="_blank"href="http://sy.fangxiaoer.com/house/shops/">新房商铺</a></li>
+                    <li class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/uhouse/shangpu/sale.aspx">发布商铺</a></li>
+                </ul>
+                <!--房仔生活-->
+                <ul id="need">
+
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/need/homeAct.aspx" >小二活动</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/need/integral.aspx" >积分商城</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/need/strategy.aspx">购房攻略</a></li>
+                    <li class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/need/baike.aspx">购房百科</a></li>
+                </ul>
+                <!--免费发布-->
+                <ul id="form">
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/sale/SaleHouse.aspx">二手房</a></li>
+                    <li><a target="_blank" href="http://sy.fangxiaoer.com/UHouse/rent/rent_form_1.aspx">租房</a></li>
+                    <li class="borderRnone"><a target="_blank" href="http://sy.fangxiaoer.com/uhouse/shangpu/sale.aspx">商铺租售</a></li>
+                </ul>
+                <!--资讯-->
+                <ul id="strategy">
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/news/149'>行业关注</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/news/148'>置业推荐</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/news/151'>楼盘活动</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/news/156'>专题推荐</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/news/154'>工程进度</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/videos/3'>活动视频</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/videos/7'>人物专访</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/videos/2'>视频看房</a></li>
+                    <li><a target="_blank" href='http://sy.fangxiaoer.com/videos/5'>微电影</a></li>
+                    <li class="borderRnone"><a target="_blank" href='http://sy.fangxiaoer.com/videos/1'>企业视频</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="cl"></div>
+    <div class="main">
+
+        <script type="text/javascript" >
+            $(function () {
+                $("dl:last").css("border", "none");
+            });
+        </script>
+        <script>
+            function GetUrl() {
+                var url = window.location.href.replace("//", "/").replace(window.location.search, "").replace("?", "").split("/");
+                if (url && url.length > 0) {
+                    var id = url[url.length - 1].replace(".aspx", "").replace(".html", "");
+                    $("." + id).find("a").attr("class", "touch");
+                }
+            }
+
+            $(function () {
+                GetUrl();
+            });
+
+            $(document).ready(function () {
+                $(".left dd").hide();
+                $(".left dt").click(function () {
+                    var me = $(this);
+                    var state = me.nextUntil("dt").css("display");
+                    if (state == "none") {
+                        $(".left dd").hide();
+                        me.nextUntil("dt").show();
+                    } else {
+                        $(".left dd").hide();
+                    }
+                });
+                $(".left dl dd").each(function(){
+                    var url = window.location.href.replace("//", "/").replace(window.location.search, "").replace("?", "").split('/');
+                    var focus=url[url.length - 1];
+                    $(this).find("a").each(function(){
+                        var link = $(this).attr("href").replace("//", "/").replace(window.location.search, "").split('/');
+                        var address=link[link.length-1];
+                        if (address == focus) {
+                            $(this).addClass("touch");
+                            var dd=$(this).parent().prevUntil('dt');
+                            if(dd.length!=0){
+                                dd.prev("dt").click();
+                            }else{
+                                $(this).parent().prev('dt').click();
+                            }
+                        }
+                    });
+                })
+
+
+            });
+
+
+        </script>
+        <div class="left">
+            <dl>
+                <dt class="ManageOrder index"><a href="/index.aspx">个人中心</a></dt>
+                <dt>我的房源</dt>
+                <dd class="SaleHouseInfoList"><a href="/Admin/SaleHouseInfoList.aspx">管理二手房</a></dd>
+                <dd class="RentalHouseList"><a href="/Admin/RentalHouseList.aspx">管理租房</a></dd>
+                <dd class="shangpuList"><a href="/Admin/shangpuList.aspx">管理商铺</a></dd>
+                <dt class="VipShow">我的订单</dt>
+                <dd><a href="/Admin/VipShow.aspx">会员订单</a></dd>
+                <dt class="ManageOrder"><a href="/Admin/ManageOrder.aspx">我的礼包</a></dt>
+                <dt class="consultation"><a href="/Admin/consultation.aspx">项目咨询</a></dt>
+                <dt>项目评价</dt>
+                <dd><a href="/Admin/Comment/MyComment.aspx">我的评价</a></dd>
+                <dd><a href="/Admin/Comment/MyPublishReply.aspx">我的回复</a></dd>
+
+                <dt>积分商城</dt>
+                <dd class="ManageProcess"><a href="/Admin/ManageProcess.aspx">我的积分</a></dd>
+                <dd class="integral_list integral_input integral_failure"><a href="/Admin/integral_list.aspx">积分订单</a></dd>
+                <dd class="integral_record"><a href="/Admin/integral_record.aspx">消费记录</a></dd>
+                <dt>帐号设置</dt>
+                <dd class="profile"><a href="/Admin/profile.aspx">资料修改</a></dd>
+                <dd class="pass"><a href="/Admin/pass.aspx">密码修改</a></dd>
+
+
+                <!--	<dd><a href="javascript:void(0)" onclick="window.open('http://v2.live800.com/live800/chatClient/chatbox.jsp?companyID=487285&configID=124641&jid=6535502194&operatorId=55674','_blank','scrollbars=0,resizable=0,width=920,height=620;');return false">在线咨询</a></dd>-->
+            </dl>
+            <div class="left_nav_tel">
+                <h3>新房客服电话</h3>
+                <p>400-893-9575</p>
+                <p>（8：00-20：00）</p>
+                <h3>二手房/租房客服电话</h3>
+                <p>400-893-9709</p>
+                <p>（8：00-20：00）</p>
+            </div>
+        </div><!--left end-->
+
+        <!--left end-->
+        <div class="right">
+            <div class="kuang">
+                <div class="people">
+
+
+
+                    <img class="icon" src="http://static.fangxiaoer.com/web/images/my/admin/icon.gif">
+                    <div class="people_r">
+
+
+
+                        <div class="cl"></div>
+                        <p class="no_vipDate"><a href="http://sy.fangxiaoer.com/need/vip.aspx" target="_blank">加入VIP，尊享5大服务</a></p>
+
+                        <div class="cl"></div>
+
+
+                        <p>绑定手机 15998875172 　<a href="/Admin/profile.aspx">[资料修改]</a> 　<a href="/admin/Logout.aspx">退出</a>　</p>
+                    </div>
+                    <a class="qiandao" href="#">
+                        <p><font style="font-size:18px;">星期5</font><br>4,21</p>
+                        <p ><font style="font-size:20px; line-height:29px;">积分<br>签到</font></p>
+                        <p><font style="font-size:30px;">1</font><br>Days</p>
+                    </a>
+                    <div class="total">
+                        <p>
+                            积分余额<span>15</span><br>
+                            推荐人数<span>0</span>
+
+                        </p>
+
+                    </div>
+                    <!-- 日历 -->
+                    <div class="rl">
+                        <div class="rili">
+                            <div id='calendar'>
+                            </div>
+                            <p>今日签到奖励<span>5</span>积分</p>
+                            <a href="#" class="close">X</a>
+                        </div>
+                    </div>
+
+
+                </div><!--people end-->
+
+                <div class="title">我的礼包</div>
+
+                <table width="877" border="0" cellpadding="0" cellspacing="0" class="tab">
+                    <tbody><tr>
+                        <th colspan="2">订单信息</th>
+                        <th width="196">使用说明</th>
+                        <th width="196">
+                            <select name="OrderType" onchange="javascript:setTimeout('__doPostBack(\'OrderType\',\'\')', 0)" id="OrderType">
+                                <option selected="selected" value="请选择">请选择</option>
+                                <option value="限时秒杀">限时秒杀</option>
+                                <option value="优惠劵">优惠劵</option>
+                                <option value="购房礼包">购房礼包</option>
+                                <option value="通用卷">通用卷</option>
+                                <option value="VIP会员">VIP会员</option>
+
+                            </select>
+                        </th>
+                        <th width="130">
+                            <select name="OrderState" onchange="javascript:setTimeout('__doPostBack(\'OrderState\',\'\')', 0)" id="OrderState">
+                                <option selected="selected" value="请选择">请选择</option>
+                                <option value="正常">正常</option>
+                                <option value="已使用">已使用</option>
+                                <option value="过期">过期</option>
+
+                            </select>
+                        </th>
+                    </tr>
+
+                    </tbody></table>
+                <div class="line"></div>
+
+                <div class="title"><a href="http://sy.fangxiaoer.com/need/integral.aspx">查看更多 ></a>积分商城</div>
+                <div class="jifen">
+                    <ul>
+
+                        <li><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=55" target="_blank"><img  src="http://images.fangxiaoer.com/sy/qt/big/2016/07/13/5785b1280a58a.jpg" /> </a><p><span><em class="n1">数码家电</em><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=55"  target="_blank">家用煮蛋器</a></span>兑换积分：<i>1000</i><br>礼品数量：20个　剩余数量：2个</p></li>
+
+                        <li><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=56" target="_blank"><img  src="http://images.fangxiaoer.com/sy/qt/big/2016/07/13/5785b85d0b207.jpg" /> </a><p><span><em class="n1">家居装饰</em><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=56"  target="_blank">家居台灯</a></span>兑换积分：<i>1200</i><br>礼品数量：20个　剩余数量：10个</p></li>
+
+                        <li><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=69" target="_blank"><img  src="http://images.fangxiaoer.com/sy/qt/big/2016/10/20/58088c9bb73b7.jpg" /> </a><p><span><em class="n1">数码家电</em><a href="http://sy.fangxiaoer.com/need/goods.aspx?goodsid=69"  target="_blank">小天鹅变频滚筒洗衣机</a></span>兑换积分：<i>38000</i><br>礼品数量：20个　剩余数量：20个</p></li>
+
+
+                    </ul>
+                </div>
+                <div class="cl"></div>
+                <div class="more">您暂时没有喜欢的礼品，<a href="http://sy.fangxiaoer.com/need/integral.aspx" target="_blank">挑挑喜欢的礼品去 ></a></div>
+                <div class="cl"></div>
+            </div>
+
+        </div>
+    </div><!--right end--><div class="cl"></div>
+
+
+
+    <div class="cl"></div>
+    <div class="footer">
+        <div class="footer_ewm footer_width">
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_1.jpg"/>
+                <p>扫描下载APP</p>
+                手机浏览器访问网址<br>m.fangxiaoer.com
+            </div>
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_2.jpg"/>
+                <p>关注微信服务号</p>
+                手指移动，轻松掌握房产最新优惠活动
+            </div>
+            <div class="footer_ewm_img">
+                <img src="http://static.fangxiaoer.com/web/images/ico/head/ewm_3.jpg"/>
+                <p>关注微信订阅号</p>
+                了解最新楼盘信息
+            </div>
+            <img src="http://static.fangxiaoer.com/web/images/ico/head/footer_160309.png" class="footer_biaoshi"/>
+        </div>
+        <div class="footer_copy footer_width">
+            <a href="http://www.fangxiaoer.org/" target="_blank">佳恒传媒</a>
+            <a href="http://www.fangxiaoer.com/Index" target="_blank">关于房小二</a>
+            <a href="http://sy.fangxiaoer.com/Sitemap.html" target="_blank">网站地图</a>
+            <a href="http://www.fangxiaoer.com/Join" target="_blank">招兵买马</a>
+            <a href="http://www.fangxiaoer.com/About/team" target="_blank">团队介绍</a>
+            <a href="http://www.fangxiaoer.com/About/development" target="_blank">发展历程</a>
+            <a href="http://www.fangxiaoer.com/About/reports" target="_blank">媒体报道</a>
+            <a href="http://www.fangxiaoer.com/About/contactus" target="_blank">联系我们</a>
+            <a href="http://www.fangxiaoer.com/About/copyright" target="_blank">版权声明</a>
+            <a href="http://www.fangxiaoer.com/About/disclaimer" target="_blank">免责声明</a>
+            <a href="http://www.fangxiaoer.com/Help" target="_blank" class="bor_n">使用帮助</a>
+            <div class="cl"></div>
+            <p>版权所有 Copyright © 2008-2017 www.fangxiaoer.com All Rights Reserved　辽B2-20150134</p>
+        </div>
+    </div>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?b7578a666e9b3a1ef607091f385e3a64";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+
+    <!--领取优惠-->
+    <div id="qyhq" class="modal_button" style="display: none"><!--class全名方法"modal_"+按钮的ID  -->
+        <div class="modal_div">
+            <img src="http://static.fangxiaoer.com/web/images/my/admin/close1.png" class="close-modal"/><!--关闭按钮-->
+            <div class="modal_con">
+                <div class="click_yhq">
+                    <p>优惠来袭，全民开抢！<br />点击领取您的全场购房通用券</p>
+                    <input type="button" value="我要抢券" class="modal_btn" onclick="addvo();"/>
+                </div>
+                <div class="yhq_xs">
+                    <p>恭喜您，领到0元通用券！</p>
+                    <div class="yhq_bg">
+                        <div class="yhq_left"><span>0</span><br />元</div>
+                        <div class="yhq_right">
+                            使用范围：指定合作项目<br />有效期：0001-1-1-0001-1-1
+                        </div>
+                    </div>
+                    <a href="/Admin/ManageOrder.aspx?CouponsId=0" class="see_quan">查看我的礼包 ></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function() {
+            $(".close-modal").click(function() {
+
+                $(this).parents(".modal_button").hide();
+            });
+        });
+        $(".modal_btn").click(function() {
+            $(".click_yhq").hide();
+            $(".yhq_xs").show();
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(".choujiang").click(function() {
+                $.ajax({
+                    type: "POST",
+                    data: {},
+                    url: "/action/Handler.ashx?Method=choujiang",
+                    async: false,
+                    success: function(data) {
+                        $("#zhongjiang").attr("src", "http://static.fangxiaoer.com/web/images/my/admin/cj" + data + ".gif");
+                        $(".jiangbing").show();
+                    }
+                });
+
+            });
+        })
+    </script>
+</form>
+
+<div>
+    <input type="hidden" name="username" value="417C57356C99BCEC" id="username" tabindex="1" />
+    <input type="hidden" name="password" value="41652c6e28043146cf69b1a66b42d382" id="password" tabindex="2" />
+    <!--<div id="loginmodal" class="modal hide in" role="dialog"
+             aria-hidden="true" data-backdrop="static">
+            <div class="modal-header">
+                <h3>用户登录</h3>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td width="65%">
+                            <label for="username">用户名:</label>
+                            <input type="text" name="username" value="" id="username" tabindex="1"/>
+                            <label for="password">密码:</label>
+                            <input type="password" name="password" value="" id="password" tabindex="2" />
+                            <label for="token">令牌:</label>
+                            <input type="text" name="token" value="" id="token" disabled="disabled" tabindex="3" />
+                        </td>
+                    </tr>
+                </table>
+                <label class="checkbox">
+                    <input type="checkbox" name="usetoken" id="usetoken" tabindex="4" />使用令牌登录
+                </label>
+            </div>
+            <div class="modal-footer">
+                <button class="flatbtn-blu" onclick="login()" tabindex="3">登录</button>
+                <button class="flatbtn-blu" onclick="showRegist()" tabindex="4">注册</button>
+            </div>
+        </div>
+        <!-- 注册操作界面 -->
+    <!--<div id="regist-div-modal" class="alert modal hide" role="dialog"
+    aria-hidden="true" data-backdrop="static">
+    <div class="modal-header">
+        <h3>用户注册</h3>
+    </div>
+    <div class="modal-body">
+        <div id="regist_div" style="overflow-y: auto">
+            <table>
+                <tr>
+                    <td width="65%">
+                        <label>用户名:</label>
+                        <input type="text"
+                            value="" id="regist_username" tabindex="1" />
+                        <label>密码:</label>
+                        <input type="password" value="" id="regist_password" tabindex="2" />
+                        <label>昵称:</label>
+                        <input type="text" value=""
+                            id="regist_nickname" tabindex="3" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button id="confirm-regist-confirmButton" class="btn btn-primary"
+            onclick="regist()">
+            完成</button>
+        <button id="confirm-regist-cancelButton" class="btn"
+            onclick="showlogin()">
+            返回</button>
+    </div>
+</div>-->
+    <div id="waitLoginmodal" class="modal hide" data-backdrop="static">
+        <img src="http://static.fangxiaoer.com/js/huanxinjs/img/waitting.gif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正在努力加载中...</img>
+    </div>
+    <div class="content" id="content" style="display: none">
+        <div class="leftcontact lxr_list" id="leftcontact">
+            <div id="headerimg" class="leftheader">
+                    <span>
+                        
+                    <span id="login_user" class="login_user_title">
+                        <a class="leftheader-font" href="#"></a>
+                        
+                    </span>
+                    <img src="http://static.fangxiaoer.com/web/images/ico/im/iconZXH.gif" style="float:right;margin:7px 11px 0 0;cursor:pointer;padding:10px 0" onclick="clock_all()">
+
+                        <!--<span>
+                        <div class="btn-group" style="margin-left: 5px;">
+                            <button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="javascript:;" onclick="showAddFriend()">添加好友</a></li>
+                                <li><a href="javascript:;" onclick="showDelFriend()">删除好友</a></li>
+                                <li class="divider"></li>
+                                <li><a href="javascript:;" onclick="logout();return false;">退出</a></li>
+                            </ul>
+                        </div>
+                    </span>-->
+            </div>
+            <div id="leftmiddle">
+                <!--
+                    <input style="width: 120px; color: #999999; margin-top: 8px;"
+                           type="text" id="searchfriend" value="搜索"
+                           onFocus="if(value==defaultValue){value='';this.style.color='#000'}"
+                           onBlur="if(!value){value=defaultValue;this.style.color='#999'}" />
+                    <button id="searchFriend" style="background: #cccccc">查询</button>
+                    -->
+            </div>
+            <div id="contractlist11"
+                 style="height: 492px; overflow-y: auto; overflow-x: auto;">
+                <div class="accordion" id="accordionDiv">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a id="accordion1" class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDiv" href="#collapseOne">我的好友 </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner" id="contractlist">
+                                <ul id="contactlistUL" class="chat03_content_ul"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:none" class="accordion-group">
+                        <div class="accordion-heading">
+                            <a id="accordion2" class="accordion-toggle collapsed"
+                               data-toggle="collapse" data-parent="#accordionDiv"
+                               href="#collapseTwo">我的群组</a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner" id="contracgrouplist">
+                                <ul id="contracgrouplistUL" class="chat03_content_ul"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='em-cr' style="display:none" class="accordion-group">
+                        <div class="accordion-heading">
+                            <a id="accordion4" class="accordion-toggle collapsed"
+                               data-toggle="collapse" data-parent="#accordionDiv"
+                               href="#collapseFour">聊天室</a>
+                        </div>
+                        <div id="collapseFour" class="accordion-body collapse">
+                            <div class="accordion-inner" id="chatRoomList">
+                                <ul id="chatRoomListUL" class="chat03_content_ul"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a id="accordion3" class="accordion-toggle collapsed"
+                               data-toggle="collapse" data-parent="#accordionDiv"
+                               href="#collapseThree">个人</a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner" id="momogrouplist">
+                                <ul id="momogrouplistUL" class="chat03_content_ul"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div id="rightTop" style="height: 78px;"></div>
+        <!-- 聊天页面 -->
+        <div id="Message" class="chatRight">
+            <div id="chat01">
+                <div class="chat01_title">
+                    <ul class="talkTo">
+                        <li id="talkTo"><a href="#"></a></li>
+                        <li id="recycle" style="float: right;">
+                            <img
+                                    src="http://static.fangxiaoer.com/js/huanxinjs/img/recycle.png" onclick="clearCurrentChat();"
+                                    style="margin-right: 15px; cursor: hand; width: 18px;" title="清屏" />
+                            <img
+                                    src="http://static.fangxiaoer.com/web/images/ico/im/iconCloseBig.gif" onclick="CloseMessage();"
+                                    style="margin-right: 15px; cursor: hand; width: 12px;" title="关闭聊天" />
+                        </li>
+                        <li id="roomInfo" style="float: right;">
+                            <img
+                                    id="roomMemberImg"
+                                    src="http://static.fangxiaoer.com/js/huanxinjs/img/head/find_more_friend_addfriend_icon.png"
+                                    onclick="showRoomMember();"
+                                    style="margin-right: 15px; cursor: hand; width: 18px; display: none"
+                                    title="成员" /></li>
+                    </ul>
+                </div>
+                <div id="null-nouser" class="chat01_content"></div>
+            </div>
+
+            <div class="chat02">
+                <div class="chat02_title">
+                    <a class="chat02_title_btn ctb01" onclick="showEmotionDialog()" title="选择表情"></a>
+                    <input id='sendPicInput' style='display: none' />
+                    <a class="chat02_title_btn ctb03" title="选择图片" onclick="send()" type='img' href="#"></a>
+                    <input id='sendAudioInput' style='display: none' />
+                    <a class="chat02_title_btn ctb02" title="选择语音" onclick="send()" href="#" type='audio'></a>
+                    <!--<input id='sendFileInput' class='emim-hide'/>
+                        <a class="chat02_title_btn ctb04" title="选择文件" onclick="send()" href="#"></a>-->
+                    <label id="chat02_title_t"></label>
+                    <div id="wl_faces_box" class="wl_faces_box">
+                        <div class="wl_faces_content">
+                            <div class="title">
+                                <ul>
+                                    <li class="title_name">常用表情</li>
+                                    <li class="wl_faces_close"><span
+                                            onclick='turnoffFaces_box()'>&nbsp;</span></li>
+                                </ul>
+                            </div>
+                            <div id="wl_faces_main" class="wl_faces_main">
+                                <ul id="emotionUL">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="wlf_icon"></div>
+                    </div>
+                </div>
+                <div id="input_content" class="chat02_content">
+                    <textarea id="talkInputId" style="resize: none;"></textarea>
+                </div>
+                <div class="chat02_bar">
+                    <ul>
+                        <li style="right: 5px; top: 5px;">
+                            <img src="http://static.fangxiaoer.com/js/huanxinjs/img/send_btn.jpg"
+                                 onclick="sendText()" /></li>
+                    </ul>
+                </div>
+
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+        <div id="addFridentModal" class="modal hide" role="dialog"
+             aria-hidden="true" data-backdrop="static">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">
+                    &times;</button>
+                <h3>添加好友</h3>
+            </div>
+            <div class="modal-body">
+                <input id="addfridentId" onfocus='clearInputValue("addfridentId")' />
+                <div id="add-frident-warning"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="addFridend" class="btn btn-primary"
+                        onclick="startAddFriend()">
+                    添加</button>
+                <button id="cancelAddFridend" class="btn" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <div id="delFridentModal" class="modal hide" role="dialog"
+             aria-hidden="true" data-backdrop="static">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">
+                    &times;</button>
+                <h3>删除好友</h3>
+            </div>
+            <div class="modal-body">
+                <input id="delfridentId" onfocus='clearInputValue("delfridentId")' />
+                <div id="del-frident-warning"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="delFridend" class="btn btn-primary"
+                        onclick="directDelFriend()">
+                    删除</button>
+                <button id="canceldelFridend" class="btn" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- 一般消息通知 -->
+        <div id="notice-block-div" class="modal hide">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="modal-body">
+                <h4>Warning!</h4>
+                <div id="notice-block-body"></div>
+            </div>
+        </div>
+        <!-- 确认消息通知 -->
+        <div id="confirm-block-div-modal" class="modal hide"
+             role="dialog" aria-hidden="true" data-backdrop="static">
+            <div class="modal-header">
+                <h3>订阅通知</h3>
+            </div>
+            <div class="modal-body">
+                <div id="confirm-block-footer-body"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-block-footer-confirmButton"
+                        class="btn btn-primary">
+                    同意</button>
+                <button id="confirm-block-footer-cancelButton" class="btn"
+                        data-dismiss="modal">
+                    拒绝</button>
+            </div>
+        </div>
+        <!-- 群组成员操作界面 -->
+        <div id="option-room-div-modal" class="alert modal hide"
+             role="dialog" aria-hidden="true" data-backdrop="static">
+            <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true">
+                &times;</button>
+            <div class="modal-header">
+                <h3>成员</h3>
+            </div>
+            <div class="modal-body">
+                <div id="room-member-list" style="height: 100px; overflow-y: auto"></div>
+            </div>
+        </div>
+
+
+        <div id="lxr" class="lxr" onclick="lxr()">联系人</div>
+    </div>
+    <input type='file' id="fileInput" style='display: none;' />
+    <div id='alert' class='em-alert' style='display: none;'>
+        <span></span>
+        <button>好的</button>
+    </div>
+</div>
+<input id="uuid" type="hidden" value="417C57356C99BCEC"/>
+<script src="http://static.fangxiaoer.com/js/huanxinjs/js/webim_my.js"></script>
+<script>
+    $(document).ready(function () {
+        curUserName = "";
+        login();
+    });
+</script>
+</body>
+</html>
+
